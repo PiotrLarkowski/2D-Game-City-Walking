@@ -3,15 +3,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
-    static final int WIDTH = 600;
-    static final int HEIGHT = 900;
+
+    public static String gameStatus = "Running";
+
+    static final int WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+    static final int HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+    static int[] screenSize = {WIDTH, HEIGHT};
+
     Thread gameThread;
     final int FPS = 60;
+
     KeyHandler keyHandler = new KeyHandler();
+    GameMenu gameMenu = new GameMenu();
 
     public GamePanel() {
 
-        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        this.setPreferredSize(new Dimension(screenSize[0], screenSize[1]));
         this.setBackground(Color.white);
         this.setLayout(null);
 
@@ -56,11 +63,16 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update() {
-
+        gameMenu.update();
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        if(gameStatus.equals("Running")){
 
+        }else if(gameStatus.equals("Menu")){
+            gameMenu.draw(g2);
+        }
     }
+
 }

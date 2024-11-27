@@ -5,6 +5,7 @@ public class MainFrame {
         JFrame window = new JFrame("Fresh project");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
+        window.setUndecorated(true);
 
         GamePanel gp = new GamePanel();
         window.add(gp);

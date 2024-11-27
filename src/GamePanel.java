@@ -1,8 +1,9 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
-public class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable {
 
     public static String gameStatus = "Running";
 
@@ -14,6 +15,8 @@ public class GamePanel extends JPanel implements Runnable{
     final int FPS = 60;
 
     KeyHandler keyHandler = new KeyHandler();
+    MouseHandler mouseHandler = new MouseHandler();
+
     GameMenu gameMenu = new GameMenu();
 
     public GamePanel() {
@@ -23,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.setLayout(null);
 
         this.addKeyListener(keyHandler);
+        this.addMouseListener(mouseHandler);
         this.setFocusable(true);
 
         launchGame();
@@ -56,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable{
                 drawCount++;
             }
             if (timer >= 1000000000) {
-                System.out.println("FPS:" + drawCount);
+//                System.out.println("FPS:" + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -74,5 +78,4 @@ public class GamePanel extends JPanel implements Runnable{
             gameMenu.draw(g2);
         }
     }
-
 }

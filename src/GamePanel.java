@@ -1,7 +1,6 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -17,12 +16,13 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyHandler = new KeyHandler();
     MouseHandler mouseHandler = new MouseHandler();
 
+    Player player = new Player();
     GameMenu gameMenu = new GameMenu();
 
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenSize[0], screenSize[1]));
-        this.setBackground(Color.white);
+        this.setBackground(Color.black);
         this.setLayout(null);
 
         this.addKeyListener(keyHandler);
@@ -66,16 +66,36 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
+
     public void update() {
         gameMenu.update();
+        player.update();
     }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        if(gameStatus.equals("Running")){
-
-        }else if(gameStatus.equals("Menu")){
+        if (gameStatus.equals("Running")) {
+//        gridDrawing(g2);
+            g2.setColor(Color.GREEN);
+            g2.fillRect(0,0,1500,850);
+            player.draw(g2);
+        } else if (gameStatus.equals("Menu")) {
             gameMenu.draw(g2);
+        }
+    }
+
+    private void gridDrawing(Graphics2D g2) {
+        g2.setColor(Color.WHITE);
+        int xCoordinate = 0;
+        int yCoordinate = 0;
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 17; j++) {
+                g2.drawRect(xCoordinate, yCoordinate, 50, 50);
+                yCoordinate = yCoordinate + 50;
+            }
+            yCoordinate = 0;
+            xCoordinate = xCoordinate + 50;
         }
     }
 }

@@ -3,6 +3,8 @@ import java.awt.*;
 public class GameMenu  {
 
     public int x, y, width, height;
+    public static int selectedMenu = 1;
+
     public void update(){
 
     }
@@ -37,7 +39,11 @@ public class GameMenu  {
             width = width - 100;
             xMenu = 30;
         }
-        g2.setColor(Color.black);
+        if(numberOfButton == selectedMenu){
+            g2.setColor(Color.WHITE);
+        }else {
+            g2.setColor(Color.black);
+        }
         g2.fillRect(x, y, width, height);
         g2.setColor(Color.blue);
         g2.fillRect(x +2, y +2, width -4, height -4);

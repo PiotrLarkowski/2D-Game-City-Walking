@@ -14,7 +14,7 @@ public class MouseHandler implements MouseListener {
             else if((e.getX()>=615 && e.getX()<=920) && (e.getY()>=460 && e.getY()<=540)){
                 System.out.println("Wybrano opcje menu 3");
             }else if((e.getX()>=660 && e.getX()<=865) && (e.getY()>=560 && e.getY()<=640)){
-                System.out.println("Wybrano opcje menu 4");
+                System.exit(0);
             }
         }
     }

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -10,14 +11,14 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (GamePanel.gameStatus.equals("Running")) {
-            if (e.getKeyCode() == KeyEvent.VK_W && Player.playerYPosition > 5) {
-                Player.playerYPosition = Player.playerYPosition - 5;
-            } else if (e.getKeyCode() == KeyEvent.VK_S && Player.playerXPosition < 1000) {
-                Player.playerYPosition = Player.playerYPosition + 5;
-            } else if (e.getKeyCode() == KeyEvent.VK_A && Player.playerXPosition > 5) {
-                Player.playerXPosition = Player.playerXPosition - 5;
-            } else if (e.getKeyCode() == KeyEvent.VK_D && Player.playerYPosition < 1000) {
-                Player.playerXPosition = Player.playerXPosition + 5;
+            if (e.getKeyCode() == KeyEvent.VK_W && Player.playerYPosition > 15) {
+                Player.playerYPosition = Player.playerYPosition - 10;
+            } else if (e.getKeyCode() == KeyEvent.VK_S && Player.playerYPosition < Toolkit.getDefaultToolkit().getScreenSize().height-Player.playerHeight-15) {
+                Player.playerYPosition = Player.playerYPosition + 10;
+            } else if (e.getKeyCode() == KeyEvent.VK_A && Player.playerXPosition > 15) {
+                Player.playerXPosition = Player.playerXPosition - 10;
+            } else if (e.getKeyCode() == KeyEvent.VK_D && Player.playerXPosition < Toolkit.getDefaultToolkit().getScreenSize().width-Player.playerWidth-15) {
+                Player.playerXPosition = Player.playerXPosition + 10;
             }
         }else if(GamePanel.gameStatus.equals("Menu")){
             if(e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP){

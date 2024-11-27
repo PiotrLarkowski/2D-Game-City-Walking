@@ -14,7 +14,6 @@ public class GamePanel extends JPanel implements Runnable {
     final int FPS = 60;
 
     KeyHandler keyHandler = new KeyHandler();
-    MouseHandler mouseHandler = new MouseHandler();
 
     Player player = new Player();
     GameMenu gameMenu = new GameMenu();
@@ -26,7 +25,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setLayout(null);
 
         this.addKeyListener(keyHandler);
-        this.addMouseListener(mouseHandler);
         this.setFocusable(true);
 
         launchGame();
@@ -76,26 +74,12 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (gameStatus.equals("Running")) {
-//        gridDrawing(g2);
             g2.setColor(Color.GREEN);
-            g2.fillRect(0,0,1500,850);
+            g2.fillRect(0,0,WIDTH,HEIGHT);
             player.draw(g2);
         } else if (gameStatus.equals("Menu")) {
             gameMenu.draw(g2);
         }
     }
 
-    private void gridDrawing(Graphics2D g2) {
-        g2.setColor(Color.WHITE);
-        int xCoordinate = 0;
-        int yCoordinate = 0;
-        for (int i = 0; i < 30; i++) {
-            for (int j = 0; j < 17; j++) {
-                g2.drawRect(xCoordinate, yCoordinate, 50, 50);
-                yCoordinate = yCoordinate + 50;
-            }
-            yCoordinate = 0;
-            xCoordinate = xCoordinate + 50;
-        }
-    }
 }
